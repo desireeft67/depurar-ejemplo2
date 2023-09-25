@@ -25,9 +25,13 @@ var nombreBuscado="",encontrado=false;
 
 
 
- while(numeroNombres==NaN){
-	numeroNombres=parseInt(prompt("¿Cuántos nombres vas a leer?","10"));
- }
+ while(isNaN(numeroNombres)){
+	numeroNombres=parseInt(prompt("¿Cuántos nombres vas a leer?", "10"));
+
+	if (isNaN(numeroNombres) || numeroNombres <= 0) {
+		alert("Por favor, introduce un número entero positivo.");
+	}
+}
    
 
 
@@ -36,19 +40,25 @@ for (var i=0;i<numeroNombres;i++){
 } 
 
 
-nombreBuscado=prompt("¿Qué nombre deseas buscar?","");
+nombreBuscado=prompt("¿Qué nombre deseas buscar?", "");
 
 
 
 for (var i=0;i<nombres.length;i++){
-	if(nombres[i]=nombre_buscado){
-		encontrado=true;
-		alert(nombreBuscado+" está en la posición "i);
-	
+	if(nombres[i] == nombreBuscado){
+		encontrado = true;
+		alert(nombreBuscado+" está en la posición "+i );
+		break;
+	}
 } 
 
-if(!encontrado)
-		prompt("No se encuentra el nombre buscado");
-		
+if(!encontrado) {
+		alert("No se encuentra el nombre buscado");
+}		
 
+var mensaje = "Los nombres son : \n\n";
+for(var i=0; i<nombres.length;i++){
+	mensaje += nombres[i] +"\n";
+}
 
+alert(mensaje);
